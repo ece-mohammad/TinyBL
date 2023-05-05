@@ -1,0 +1,3 @@
+[submodule "TestHarness/CMock"]
+	path = TestHarness/CMock
+	url = git@github.com:ThrowTheSwitch/CMock.git
