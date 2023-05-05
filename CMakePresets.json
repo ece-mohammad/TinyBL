@@ -1,0 +1,40 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "gnu-gcc-win-32",
+            "displayName": "gnu-gcc-win-32",
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/cmake_build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/build/cmake/gnu-gcc-win32.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}"
+            },
+            "environment": {
+                "CMOCK_HOME": "${sourceDir}/TestHarness/CMock",
+                "UNITY_HOME": "${sourceDir}/TestHarness/CMock/vendor/unity",
+                "C_EXCEPTION_HOME": "${sourceDir}/TestHarness/CMock/vendor/c_exception",
+                "UNITY_CONFIG_PATH": "${sourceDir}/Bootloader/Test/Inc/UnityConfig"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Build",
+            "description": "build",
+            "displayName": "Build",
+            "configurePreset": "gnu-gcc-win-32"
+        },
+        {
+            "name": "Rebuild",
+            "description": "Clears files before building",
+            "displayName": "Rebuild",
+            "cleanFirst": true,
+            "inherits": [
+                "Build"
+            ]
+        }
+    ]
+}

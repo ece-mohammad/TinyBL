@@ -1,0 +1,63 @@
+# this is a sample configuration file for generate_module
+# you would use it by calling generate_module with the -ygenerate_config.yml option
+# files like this are useful for customizing generate_module to your environment
+:unity:
+  :src:
+  :inc:
+  :path:
+
+:generate_module:
+  :unity:
+  :defaults:
+    # these defaults are used in place of any missing options at the command line
+    :path_src: ./Src/
+    :path_inc: ./Inc/
+    :path_tst: ../Test/
+    :update_svn: false
+  :includes:
+    # use [] for no additional includes, otherwise list the includes on separate lines
+    :src:
+      - stddef.h
+      - stdint.h
+    :inc: []
+    :tst:
+      - stddef.h
+      - stdint.h
+      - unity.h
+  :boilerplates: 
+    # these are inserted at the top of generated files.
+    # just comment out or remove if not desired.
+    # use %1$s where you would like the file name to appear (path/extension not included)
+    :src: |
+      /******************************************************************************
+      * @file    %1$s.h
+      * @author  Mohammad Mohsen <kuro.ece@gmail.com>
+      * @brief 
+      * @version 0.1
+      * @date    yyyy-mm-dd
+      * 
+      * @copyright Copyright (c) 2023
+      * 
+      *****************************************************************************/
+    :inc: |
+      /******************************************************************************
+      * @file    %1$s.c
+      * @author  Mohammad Mohsen <kuro.ece@gmail.com>
+      * @brief 
+      * @version 0.1
+      * @date    yyyy-mm-dd
+      * 
+      * @copyright Copyright (c) 2023
+      * 
+      *****************************************************************************/
+    :tst: |
+      /******************************************************************************
+      * @file    Test%1$s.h
+      * @author  Mohammad Mohsen <kuro.ece@gmail.com>
+      * @brief   Unit test for %1$s.c
+      * @version 0.1
+      * @date    yyyy-mm-dd
+      * 
+      * @copyright Copyright (c) 2023
+      * 
+      *****************************************************************************/
